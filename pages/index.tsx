@@ -1,7 +1,10 @@
 import { GetStaticProps, NextPage } from 'next';
 import Layout from '../app/components/common/Layout';
-import SearchSection from '../app/components/elements/Home/SearchSection/SearchSection';
+import SearchSection from '../app/components/elements/Home/HeadingSection/HeadingSection';
 import { IPlace } from '../app/types/place';
+import Search from './../app/components/elements/Search/Search';
+import Filters from './../app/components/elements/Filters/Filters';
+import HeadingSection from '../app/components/elements/Home/HeadingSection/HeadingSection';
 
 interface IHome {
 	places: IPlace[]
@@ -10,8 +13,10 @@ interface IHome {
 const Home: NextPage<IHome> = ({ places }) => {
 	return (
 		<Layout>
+			<HeadingSection />
 			<div style={{ width: '80%', margin: '0 auto' }}>
-				<SearchSection />
+				<Search />
+				<Filters />
 			</div>
 		</Layout>
 	)
