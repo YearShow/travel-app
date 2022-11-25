@@ -1,19 +1,21 @@
 import { FC, useState } from 'react'
 import cn from "classnames";
 import styles from './Filters.module.scss'
+import { TypeSetState } from '../../../types/common';
+import { IPlace } from './../../../types/place';
 
-const cities = [
+const countries = [
 	{
-		location: 'Paris'
+		location: 'France'
 	},
 	{
 		location: 'Bora Bora'
 	},
 	{
-		location: 'Maui'
+		location: 'Italy'
 	},
 	{
-		location: 'Tahiti'
+		location: 'Japan'
 	},
 	{
 		location: 'Brazil'
@@ -23,14 +25,32 @@ const cities = [
 	}
 ]
 
-const Filters: FC = () => {
+interface IFilters {
+	setPlaces: TypeSetState<IPlace[]>
+	initialPlaces: IPlace[]
+}
+
+const Filters: FC<IFilters> = ({ setPlaces, initialPlaces }) => {
 	const [filter, setFilter] = useState('');
 
+	const handleFilter = (location: string) => {
+		if (filter === location) {
+			setPlaces(initialPlaces)
+			setFilter('')
+		} else {
+			setPlaces(initialPlaces.filter(
+				place =>
+					place.location.country.toLowerCase() === location.toLowerCase()
+			))
+			setFilter(location)
+		}
+	}
+
 	return <div className={styles.wrapper}>
-		{cities.map(city =>
+		{countries.map(city =>
 			<button
 				key={city.location}
-				onClick={() => setFilter(city.location)}
+				onClick={() => handleFilter(city.location)}
 				className={cn({
 					[styles.active]: city.location === filter
 				})}
