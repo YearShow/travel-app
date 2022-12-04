@@ -1,1 +1,33 @@
-323),function(e){return prefix(["cross-fade"],{props:["background","background-image","border-image","mask","list-style","list-style-image","content","mask-image"],feature:"css-cross-fade",browsers:e})});f(t(3502),function(e){return prefix([":read-only",":read-write"],{selector:true,feature:"css-read-only-write",browsers:e})});f(t(5802),function(e){return prefix(["text-emphasis","text-emphasis-position","text-emphasis-style","text-emphasis-color"],{feature:"text-emphasis",browsers:e})});var g=t(7776);f(g,function(e){prefix(["display-grid","inline-grid"],{props:["display"],feature:"css-grid",browsers:e});prefix(["grid-template-columns","grid-template-rows","grid-row-start","grid-column-start","grid-row-end","grid-column-end","grid-row","grid-column","grid-area","grid-template","grid-template-areas","place-self"],{feature:"css-grid",browsers:e})});f(g,{match:/a x/},function(e){return prefix(["grid-column-align","grid-row-align"],{feature:"css-grid",browsers:e})});f(t(8422),function(e){return prefix(["text-spacing"],{feature:"css-text-spacing",browsers:e})});f(t(1977),function(e){return prefix([
+import { NextApiRequest, NextApiResponse } from 'next'
+import { IPlace } from '../../../app/types/place'
+
+export const places: IPlace[] = [
+	{
+		slug: 'tokyo',
+		description:
+			'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,',
+		imagePath: 'http://localhost:3000/images/places/japan.jpg',
+		location: { country: 'Japan', city: 'Kyoto' },
+		rating: 5,
+		duration: '10 days',
+		distance: 10453,
+		googleMapLink: 'wefewf',
+		mapImage: 'egfw',
+	},
+	{
+		slug: 'venezia',
+		description:
+			'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,',
+		imagePath: 'http://localhost:3000/images/places/italy.jpg',
+		location: { country: 'Italy', city: 'Venezia' },
+		rating: 5,
+		duration: '7 days',
+		distance: 9453,
+		googleMapLink: 'wefewf',
+		mapImage: 'egfw',
+	},
+]
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+	res.status(200).json(places)
+}

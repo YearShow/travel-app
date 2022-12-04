@@ -1,28 +1,29 @@
 import { FC, useState } from 'react'
-import cn from "classnames";
+import cn from 'classnames'
+
 import styles from './Filters.module.scss'
-import { TypeSetState } from '../../../types/common';
-import { IPlace } from './../../../types/place';
+import { TypeSetState } from '../../../types/common'
+import { IPlace } from '../../../types/place'
 
 const countries = [
 	{
-		location: 'France'
+		location: 'France',
 	},
 	{
-		location: 'Bora Bora'
+		location: 'Japan',
 	},
 	{
-		location: 'Italy'
+		location: 'Norway',
 	},
 	{
-		location: 'Japan'
+		location: 'Italy',
 	},
 	{
-		location: 'Brazil'
+		location: 'Brazil',
 	},
 	{
-		location: 'Norway'
-	}
+		location: 'USA',
+	},
 ]
 
 interface IFilters {
@@ -31,34 +32,38 @@ interface IFilters {
 }
 
 const Filters: FC<IFilters> = ({ setPlaces, initialPlaces }) => {
-	const [filter, setFilter] = useState('');
+	const [filter, setFilter] = useState('')
 
 	const handleFilter = (location: string) => {
 		if (filter === location) {
 			setPlaces(initialPlaces)
 			setFilter('')
 		} else {
-			setPlaces(initialPlaces.filter(
-				place =>
-					place.location.country.toLowerCase() === location.toLowerCase()
-			))
+			setPlaces(
+				initialPlaces.filter(
+					place =>
+						place.location.country.toLowerCase() === location.toLowerCase()
+				)
+			)
 			setFilter(location)
 		}
 	}
 
-	return <div className={styles.wrapper}>
-		{countries.map(city =>
-			<button
-				key={city.location}
-				onClick={() => handleFilter(city.location)}
-				className={cn({
-					[styles.active]: city.location === filter
-				})}
-			>
-				{city.location}
-			</button>
-		)}
-	</div>
+	return (
+		<div className={styles.wrapper}>
+			{countries.map(country => (
+				<button
+					onClick={() => handleFilter(country.location)}
+					key={country.location}
+					className={cn({
+						[styles.active]: country.location === filter,
+					})}
+				>
+					{country.location}
+				</button>
+			))}
+		</div>
+	)
 }
 
 export default Filters

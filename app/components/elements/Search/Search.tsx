@@ -1,9 +1,7 @@
-import { ChangeEvent, FC, useState } from 'react'
-import { TypeSetState } from '../../../types/common';
-import { IPlace } from './../../../types/place';
+import { ChangeEvent, FC, KeyboardEvent, useState } from 'react'
+import { TypeSetState } from '../../../types/common'
+import { IPlace } from '../../../types/place'
 import styles from './Search.module.scss'
-
-const searchIconTitle = "search";
 
 interface ISearch {
 	setPlaces: TypeSetState<IPlace[]>
@@ -12,34 +10,35 @@ interface ISearch {
 }
 
 const Search: FC<ISearch> = ({ setPlaces, initialPlaces, setIsLoading }) => {
-	const [searchTerm, setSearchTerm] = useState('');
+	const [searchTerm, setSearchTerm] = useState('')
 
 	const searchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		const value = (e.target.value)
-
+		setIsLoading(true)
+		const value = e.target.value
 		setSearchTerm(value)
 
-		if (value) {
-			setPlaces(
-				initialPlaces.filter(
-					place =>
-						place.location.city.toLowerCase().includes(value) ||
-						place.location.country.toLowerCase().includes(value)
+		setTimeout(() => {
+			if (value)
+				setPlaces(
+					initialPlaces.filter(
+						place =>
+							place.location.city.toLowerCase().includes(value) ||
+							place.location.country.toLowerCase().includes(value)
+					)
 				)
-			)
-		} else {
-			setPlaces(initialPlaces)
-		}
+			else setPlaces(initialPlaces)
+			setIsLoading(false)
+		}, 1500)
 	}
 
 	return (
 		<div className={styles.search}>
-			<span className='material-icons-outlined'>{searchIconTitle}</span>
+			<span className='material-icons-outlined'>search</span>
 			<input
-				type="text"
+				type='text'
 				onChange={searchHandler}
 				value={searchTerm}
-				placeholder="Search place..."
+				placeholder='Search place...'
 			/>
 		</div>
 	)

@@ -1,9 +1,7 @@
-import React, {FC} from "react";
-
-import styles from './Information.module.scss'
+import { FC } from 'react'
 
 const Map: FC = () => {
-    return <div className={styles.map}>q</div>
+	return <div></div>
 }
 
-export default Map;
+export default Map

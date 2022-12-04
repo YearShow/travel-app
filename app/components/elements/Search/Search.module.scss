@@ -1,9 +1,9 @@
-@import "./../../../../assets/styles/variables";
+@import '../../../../assets/styles/variables';
 
 .search {
 	background-color: rgba(255, 255, 255, 0.06);
 	border: 1px solid transparent;
-	transition: border .4s ease;
+	transition: border 0.4s ease;
 
 	border-radius: 30px;
 	width: 100%;
@@ -18,13 +18,13 @@
 		border-color: rgba($accent, 0.5);
 	}
 
-	>span {
+	> span {
 		margin-right: 10px;
 		color: $white;
 		opacity: 0.8;
 	}
 
-	>input {
+	> input {
 		padding: 1rem 0;
 		background-color: transparent;
 		outline: none;

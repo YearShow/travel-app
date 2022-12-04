@@ -5,27 +5,27 @@
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	background-color: rgba(15, 15, 16, .97);
+	background-color: rgba(15, 15, 16, 0.97);
 	z-index: 10;
 
-	>nav {
+	> nav {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		height: 70px;
 
-		>button {
+		> button {
 			margin: 0 2rem;
 
-			>span {
-				transition: color .4s ease;
+			> span {
+				transition: color 0.4s ease;
 				font-size: 2rem;
 				color: $gray;
 			}
 
 			&:hover,
 			&.active {
-				>span {
+				> span {
 					color: $accent;
 				}
 			}

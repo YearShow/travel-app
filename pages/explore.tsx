@@ -1,10 +1,7 @@
-import React from 'react'
-import Layout from '../app/components/common/Layout';
+import Layout from '../app/components/common/Layout'
 
 const Explore = () => {
-	return (
-		<Layout>Explore</Layout>
-	)
+	return <Layout>Explore</Layout>
 }
 
 export default Explore

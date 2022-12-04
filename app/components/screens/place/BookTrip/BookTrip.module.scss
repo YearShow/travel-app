@@ -3,16 +3,15 @@
 .button {
 	font-size: 15px;
 	background-color: $accent;
-	border-radius: 30px;
 	border: none;
 	outline: none;
+	border-radius: 30px;
 	box-shadow: 0 3px 6px rgba($accent, 0.4);
 	display: flex;
 	align-items: center;
 	padding: 7px 24px;
 	padding-right: 7px;
-	transition: background-color 0.2s ease-in-out,
-		box-shadow 0.2s ease-in-out;
+	transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 	margin: 3rem auto 0;
 
 	&:hover {

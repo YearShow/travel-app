@@ -1,5 +1,5 @@
-import { useRouter } from 'next/dist/client/router';
-import styles from './Footer.module.scss';
+import { useRouter } from 'next/router'
+import styles from './Footer.module.scss'
 
 type TypeNavItem = {
 	icon: string
@@ -9,38 +9,40 @@ type TypeNavItem = {
 const navItems: TypeNavItem[] = [
 	{
 		icon: 'home',
-		link: '/'
+		link: '/',
 	},
 	{
 		icon: 'explore',
-		link: '/explore'
+		link: '/explore',
 	},
 	{
 		icon: 'place',
-		link: '/place/kyoto'
+		link: '/place/kyoto',
 	},
 	{
 		icon: 'person_outline',
-		link: '/profile'
+		link: '/profile',
 	},
 ]
 
 const Footer = () => {
-	const { push, pathname } = useRouter();
+	const { push, pathname } = useRouter()
 
-	return <footer className={styles.footer}>
-		<nav>
-			{navItems.map(item =>
-				<button
-					className={pathname === item.link ? styles.active : ''}
-					onClick={() => push(item.link)}
-					key={item.icon}
-				>
-					<span className="material-icons-outlined">{item.icon}</span>
-				</button>
-			)}
-		</nav>
-	</footer>
+	return (
+		<footer className={styles.footer}>
+			<nav>
+				{navItems.map(item => (
+					<button
+						className={pathname === item.link ? styles.active : ''}
+						onClick={() => push(item.link)}
+						key={item.icon}
+					>
+						<span className='material-icons-outlined'>{item.icon}</span>
+					</button>
+				))}
+			</nav>
+		</footer>
+	)
 }
 
 export default Footer

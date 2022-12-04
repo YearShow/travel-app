@@ -1,23 +1,22 @@
 import React, { FC } from 'react'
 import { IPlace } from '../../../types/place'
-import Layout from './../../common/Layout';
-import BookTrip from './BookTrip/BookTrip';
-import Information from "./Information/Information";
-import Header from "./Header/Header";
-import Wrapper from "./Wrapper/Wrapper";
+import Layout from '../../common/Layout'
+import BookTrip from './BookTrip/BookTrip'
+import Header from './Header/Header'
+import Information from './Information/Information'
 
 interface IPlacePage {
 	place: IPlace
 }
 
 const Place: FC<IPlacePage> = ({ place }) => {
-	return <Layout isMaxWidth={false}>
-	<Wrapper imagePath={place.imagePath}>
-		<Header />
-		<Information place={place} />
-		<BookTrip />
-	</Wrapper>
-	</Layout>
+	return (
+		<Layout>
+			<Header />
+			<Information place={place} />
+			<BookTrip />
+		</Layout>
+	)
 }
 
-export default Place;
+export default Place
