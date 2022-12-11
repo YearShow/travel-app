@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import cn from 'classnames'
+import uniqBy from 'lodash/uniqBy';
 
 import styles from './Filters.module.scss'
 import { TypeSetState } from '@/types/common'
@@ -51,17 +52,18 @@ const Filters: FC<IFilters> = ({ setPlaces, initialPlaces }) => {
 
 	return (
 		<div className={styles.wrapper}>
-			{countries.map(country => (
-				<button
-					onClick={() => handleFilter(country.location)}
-					key={country.location}
+			{uniqBy(initialPlaces, 'location.country').map(place => {
+				const country = place.location.country
+				return <button
+					onClick={() => handleFilter(country)}
+					key={country}
 					className={cn({
-						[styles.active]: country.location === filter,
+						[styles.active]: country === filter,
 					})}
 				>
-					{country.location}
+					{country}
 				</button>
-			))}
+			})}
 		</div>
 	)
 }
